@@ -1,29 +1,37 @@
-# CapistranoTailLogs
+# Capistrano recipe to inspect remote log files
 
-TODO: Write a gem description
+Provides a couple of tasks for downloading and tail-following remote log files.
 
 ## Installation
 
-Add this line to your application's Gemfile:
+The following assumes you use bundler. If you are working on a Rails 3 project, this should be the case.
 
-    gem 'capistrano_tail_logs'
+To use this gem, first add the following to your Gemfile:
 
-And then execute:
+    gem "capistrano_tail_logs", :git => "git@github.com:amfranz/capistrano_tail_logs.git"
 
-    $ bundle
+Then install the gem by executing:
 
-Or install it yourself as:
+    $ bundle install
 
-    $ gem install capistrano_tail_logs
+Afterwards, add the following to your config/deploy.rb:
+
+    require "tail_logs/capistrano"
 
 ## Usage
 
-TODO: Write usage instructions here
+To tail-follow the remote log file, use this command:
 
-## Contributing
+    bundle exec cap log:tail
 
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+To download the remote log file, use this command:
+
+    bundle exec cap log:download
+
+## License
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
